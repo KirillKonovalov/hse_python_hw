@@ -14,7 +14,7 @@ os.makedirs(current_dir + '\\root\\parsed text\\2019')
 
 url = 'https://www.svoboda.org/news/2019/'
 
-with open(current_dir + '\\root\\meta_data.csv', 'a') as csvfile:
+with open(current_dir + '\\root\\meta_data.csv', 'a', encoding='UTF-8') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=';', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(['path','author','date','source','title','url','wordcount'])
     
@@ -48,8 +48,8 @@ for month in range(1, 13):
             
             try:
                 heading = soup2.find('h1', attrs={'class':'pg-title'})
-                article_name = heading.get_text() #название статьи
-                article = soup2.find('div', attrs={'id':'article-content'}) #текст статьи
+                article_name = heading.get_text() 
+                article = soup2.find('div', attrs={'id':'article-content'})
                 
                 news_list = []
                 for p in article.find_all('p'):
