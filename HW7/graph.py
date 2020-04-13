@@ -2,7 +2,7 @@ import gensim
 import networkx as nx
 import matplotlib.pyplot as plt
 
-model = gensim.models.Word2Vec.load("got_model.model")
+model = gensim.models.Word2Vec.load("mystem_texts_model.model")
 model.init_sims(replace = True)
 
 words = model.wv.index2entity
@@ -13,15 +13,16 @@ G = nx.Graph()
 for v in top10:
     for i in model.wv.most_similar(positive = [v], topn = 10):
         G.add_edge(v, i[0])
-    
+
 
 pos=nx.spring_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='gray', node_size=10)
 nx.draw_networkx_edges(G, pos, edge_color='blue')
-nx.draw_networkx_labels(G, pos, font_size=5, font_family='DejaVu Sans')
+nx.draw_networkx_labels(G, pos, font_size=12, font_family='DejaVu Sans')
 plt.axis('off')
-plt.savefig('got_graph_plot.pdf')
-plt.savefig('got_graph_plot.png')
+plt.plot(figsize=(20,10))
+plt.savefig('mystem_graph_plot.pdf')
+plt.savefig('mystem_graph_plot.png')
 plt.show()
 
 try:
