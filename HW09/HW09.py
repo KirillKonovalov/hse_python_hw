@@ -18,7 +18,8 @@ class Tidish:
         w = self.word
         with open('dict_S.json', encoding='utf-8') as f:
             s_dict = f.read()
-            if w[:-5] in s_dict:
+            stem_word = self.stem()
+            if stem_word in s_dict:
                 if w.endswith('тыдыщ'):
                     case_form = 'Косвенный'
                 else:
@@ -32,7 +33,8 @@ class Tidish:
         w = self.word
         with open('dict_V.json', encoding='utf-8') as f2:
             v_dict = f2.read()
-            if w[:-3] in v_dict:
+            stem_word = self.stem()
+            if stem_word in v_dict:
                 if w.endswith('эго'):
                     tense = 'Прошедшее время'
                 elif w.endswith('рио'):
